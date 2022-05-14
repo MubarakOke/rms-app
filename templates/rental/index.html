@@ -34,7 +34,11 @@
                 <td>{{reservation.rental.name}}</td>
                 <td>{{reservation.checkin|date:"Y-m-d"}}</td>
                 <td>{{reservation.checkout}}</td>
-                <td>{{reservation.id|add:"-1"}}</td>
+                {% if reservation.previous_id %}
+                <td>{{reservation.previous_id}}</td>       
+                {% else %}
+                <td>-</td>
+                {% endif %}
             </tr>
             {% empty %}
             <tr>
