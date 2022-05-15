@@ -3,12 +3,13 @@ from django.contrib.auth.models import Group
 from .models import Rental, Reservation
 
 class RentalAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'reservations')
+    list_display= ('id', 'name', 'reservations')
     def reservations(self, obj):
         return [reservation for reservation in obj.reservation.all()]
 
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'rental')
+    list_display= ('id', 'rental')
+    readonly_fields= ["previous_id"]
 
 
 
